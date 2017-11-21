@@ -1,0 +1,163 @@
+﻿```TITLE: Setup Jenkins On Ubuntu 14.04 LTS
+Author: Naveen Vemuri
+
+URL path: {Setup_Jenkins_On_Ubuntu_14.04 }
+Categorization - bold one or more
+Agile Software Development
+Angular
+Blog
+Community 
+Design
+DevOps and tools
+Front End Development
+Game Development
+Hybrid
+Industry
+Internet of Things
+Ionic
+JavaScript
+
+Lean Startup
+Native
+News
+Other
+Product Management
+Project Management
+Quality Assurance
+React
+Sencha
+Tools
+Uncategorized
+UX
+
+Hashtags 
+(Examples below; please add your own, but use known industry tags.) 
+#Jenkins
+#continuous integration
+#nginx
+
+
+
+
+
+
+  Setup Jenkins On Ubuntu 14.04 LTS
+        Jenkins is an open source free software automation server written in Java. Jenkins provides a wide range of plugins for building, deploying, testing and automating. For continuous deployments, Jenkins helps by speeding up processes such as building software or jobs ran by cron, monitoring, and execution of repeated jobs. 
+
+Jenkins automates the non-human part of the software development process, with continuous integration and facilitating technical aspects of continuous delivery. Jenkins can be installed from Ubuntu packages using apt-get or download and run the application from Archive(WAR) files. 
+
+Jenkins supports version control tools, including CVS, Subversion, Git, Mercurial, RTC, etc. You can read more about this in the Jenkins Wiki. We’ll move forward with a step by step installation procedure and configuring Jenkins on Ubuntu 14.04 LTS.
+
+Requirements 
+Configure Ubuntu 14.04 LTS with superuser privileges, so that you can perform basic installations and update your server with the latest packages. Jenkins need to have a web server installed and running on it. When the server is setup you are ready to move forward with next steps.
+
+Let’s Start…..
+
+Before moving on to installing the packages on server, your system needs to be updated.
+Run the following command to ensure your system is up-to-date:
+   
+root@ubuntu:~#apt-get update
+
+Web Server Installation
+Jenkins needs to have a basic web server installed. Web server’s are used to store web site files and broadcast them over the internet. They are like gateways between the average individual and the world wide web. If you need to install a webserver, run the following command.
+
+root@ubuntu:~#apt-get install nginx
+“nginx” is an example. You can use apache or any other web server of your choice. After executing, it will start installing nginx.
+
+
+It will prompt you for a ‘Y’ or ‘N’. Type ‘Y’ and the installation will continue and nginx will be installed on your system.
+Once the installation process is complete, you can check the status of the nginx by following command.
+root@ubuntu:~#service nginx status
+* nginx is running
+By this we can confirm that nginx is running fine and move onto next steps.
+
+Install Java
+              Debian-based distributions like Ubuntu will install java with apt-get package manager. This is the easy way to install java with default packages for jre/jdk; execute the following commands:
+root@ubuntu:~#sudo apt-get install default-jre
+
+
+To continue, type ‘Y’.
+It will install Java Runtime Environment(JRE). If you need Java Development Kit (JDK), for compiling java applications run the following command: 
+root@ubuntu:~#sudo apt-get install default-jdk
+
+
+Type ‘Y’ to continue.
+
+By executing those commands, java will be installed When installing Jenkins latest version, you need to have Java 7 or above version Java 8(recommended). If you use the default commands shown above, the latest versions of Java will be installed, and you can skip the steps below and move onto the Jenkins installation.
+Optional:
+For installing the Oracle JDK 7 or 8 execute this command with apt-get:
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+
+Depending upon your requirements, use the following commands to install:
+Oracle JDK 7:
+                  sudo apt-get install oracle-java7-installer
+Oracle JDK 8:
+                  sudo apt-get install oracle-java8-installer
+
+While executing the above commands, it will show the required packages to be installed with Java ‘openjdk’. To continue with those packages,type’`Y’ or ‘N’ to exit the installer.
+This take few minutes to finish the installation.
+
+Once your installation steps are completed, check the version of Java on the server and fly to Jenkins installation.
+root@ubuntu:~#java -version
+java version "1.8.0_144"
+Java(TM) SE Runtime Environment (build 1.8.0_144-b01)
+Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
+
+Installing Jenkins
+Now you are all set to install Jenkins. Install the latest version of Jenkins, so that you can take  advantage of latest fixes. Before doing that you need to add key and source list for jenkins. Run the following commands:
+root@ubuntu:~#wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+
+ When the key is added, you will get the ‘OK’ response. Next, add the source list:
+root@ubuntu:~#echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list
+When the keys and sources are added,update the system using apt-get to use a new repository before installing Jenkins.
+
+root@ubuntu:~#apt-get update
+Once the update is completed, you are ready for installation of Jenkins. Execute the following command on terminal;it will prompt for ‘Yes’ or ‘No’. Type ‘Y’ and your installation process will be started:
+root@ubuntu:~#apt-get install jenkins
+
+
+It will continue the installation and daemon will be starting.
+
+Now, the installation process is completed. To check the status of Jenkins service, run: f
+
+root@ubuntu:~#service jenkins status
+
+It will display the status and running process ID(PID).
+
+Jenkins Continuous Integration Server is running with the pid 16845
+Voila! Your Jenkins is online and running.
+By default, Jenkins runs on port 8080. If port 8080 is busy, you can switch ports by updating the default directory which is located at /etc/default/jenkins and update HTTP_PORT to 8081(HTTP_PORT=8081).
+Configure Jenkins On Web
+After a successful installation of Jenkins, you need to configure its GUI on one of your favourite web browsers. You can access the server by using your ip-address and port, like this:     
+http://localhost:8080 or http://your-ip-address:8080
+
+You are able to see the display screen, which will ask for password. Your password can be found in /var/lib/jenkins/secrets/initialAdminPassword. Use the password in‘Administrator Password’ field and click continue.
+
+You should now see a ‘Customize Jenkins’ page where you will select how to install your plugins.
+
+After installing your plugins, it will be time to create an admin account to log in to Jenkins.
+
+Complete the required fields, and click on save and finish.
+
+! You now have successfully setup Jenkins and your brand new Jenkins server is ready for use!
+
+Conclusion
+Installing and configuring Jenkins can be daunting, but following the steps outlined in this post will make it easy and straightforward. Were you successful? Do you have any questions I can answer?  
+     
+
+
+
+Reviews
+
+Standard Review: Sarah/ 2017-10-20/ Made grammar changes. Plz be sure to have two technical experts also review to ensure content is accurate. Good job!
+Standard Review: {Name, date, comments*}
+
+Subject Expert: {Name, date, comments*} 
+Subject Expert: {Name, date, comments*} 
+
+*examples = good to go, fix commented items, needs more examples, explain <thing>, etc
+
+
+```
