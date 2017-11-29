@@ -3,4 +3,5 @@ node {
   echo 'hello world'
   stage 'test'
   echo 'hello'
+  stage 'deploy'
 }
