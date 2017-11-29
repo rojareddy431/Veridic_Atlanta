@@ -4,7 +4,9 @@ pipeline {
 	stages {
 		stage('Checkout') {
 			steps {
-				git 'https://github.com/VeridicSolutionsOrg/Veridic_Atlanta.git'
+				git clone 'https://github.com/VeridicSolutionsOrg/Veridic_Atlanta.git'
+				cd Veridic_Atlanta/
+				git checkout shasiteja
 			}
 		}
 		stage('Build') {
