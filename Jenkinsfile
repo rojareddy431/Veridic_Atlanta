@@ -1,6 +1,6 @@
 node {
-  stage 'stage 1'
+  stage 'build'
   echo 'hello world'
-  stage 'stage2'
+  stage 'test'
   echo 'hello veridic'
  }
