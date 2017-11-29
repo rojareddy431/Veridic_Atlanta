@@ -5,4 +5,4 @@ node {
   echo 'hello veridic'
   stage 'Deploy'
   echo 'hello Atlanta'
- }
+}
