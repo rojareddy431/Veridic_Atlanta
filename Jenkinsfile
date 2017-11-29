@@ -9,14 +9,14 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				withMaven(maven:'maven_3_5_2') {
+				withMaven(maven:'maven_3_0_5') {
 					sh 'mvn clean compile'
 				}
 			}
 		}
 		stage('Deploy') {
 			steps {
-				withMaven(maven: 'maven_3_5_2') {
+				withMaven(maven: 'maven_3_0_5') {
 					sh 'mvn deploy'
 				}
 			}
