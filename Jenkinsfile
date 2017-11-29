@@ -4,18 +4,21 @@ pipeline {
 	stages {
 		stage('Checkout') {
 			steps {
-				sh 'make'
+				git 'https://github.com/VeridicSolutionsOrg/Veridic_Atlanta.git'
 			}
 		}
 		stage('Build') {
 			steps {
-				sh 'make check'
-				junit 'reports/**/*.xml'
+				withmaven(maven:'maven_3_5_2') {
+					sh 'mvn clean compile'
+				}
 			}
 		}
 		stage('Deploy') {
 			steps {
-				sh 'make publish'
+				withmaven(maven: 'maven_3_5_2') {
+					sh 'mvn deploy'
+				}
 			}
 		}
 	}
