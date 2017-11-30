@@ -1,9 +1,9 @@
 node
 {
-stage 'build'
+stage 'BuildStage'
 echo 'buiding now...'
-stage 'test'
+stage 'TestStage'
 echo 'build now'
-stage 'deploy'
+stage 'DeploymentStage'
 echo 'MARVEL'
 }
