@@ -1,21 +1,23 @@
+#!/usr/bin/env groovy
+
+
 pipeline {
-    agent any
+    agent any 
 
     stages {
         stage('Build') { 
             steps { 
-                sh 'Hello World' 
+                echo " This is Build Stage"
             }
         }
         stage('Test'){
             steps {
-                sh 'make check'
-                junit 'reports/**/*.xml' 
+                echo "This is a Test Stage" 
             }
         }
         stage('Deploy') {
             steps {
-                sh 'make publish'
+                echo "This is a Deploy Stage"
             }
         }
     }
